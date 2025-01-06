@@ -1,26 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="bg-gray-50 px-6 py-4">
+    <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center">
+      Управление пользователями
+    </h1>
+    <!-- Список пользователей -->
+    <div class="mb-4"> <!-- Уменьшаем отступ снизу -->
+      <UserList />
+    </div>
+    <!-- Форма добавления пользователя -->
+    <div>
+      <UserForm />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UserList from './components/UserList.vue';
+import UserForm from './components/AddUserForm.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    UserList,
+    UserForm,
+  },
+  methods: {
+    reloadUsers() {
+      this.$refs.userList.fetchUsers();
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
